@@ -2,6 +2,16 @@
 <classpath>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/acra"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/android_support_v4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache_common_io"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hamcrest"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/joda"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mockito"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/powermock"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/robolectric"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/twitter4j"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
@@ -20,5 +30,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

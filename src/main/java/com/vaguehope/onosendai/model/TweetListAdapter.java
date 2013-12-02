@@ -1,5 +1,12 @@
 package com.vaguehope.onosendai.model;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Queue;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,5 +120,102 @@ public class TweetListAdapter extends BaseAdapter {
 		}
 
 	}
+	
+	public void sortByThread(){
+	    TweetTreeNode root = new TweetTreeNode();
+	    ArrayList<Tweet> result = new ArrayList<Tweet>();
+	    
+	    for(Tweet tweet: listData.getTweets()) {
+	        Meta inReplyTo = tweet.getFirstMetaOfType(MetaType.INREPLYTO);
+	        
+	        if(inReplyTo == null) {
+	            root.add(tweet);
+	        } else {
+	            TweetTreeNode replyedTweet = root.findBySid(inReplyTo.getData());
+	            replyedTweet.add(tweet);
+	        }
+	    }
+	    
+	    Queue<TweetTreeNode> queue = new ArrayDeque<TweetTreeNode>();
+	    queue.offer(root);
+	    
+	    while(!queue.isEmpty()) {
+	        TweetTreeNode node = queue.poll();
+	        
+	        if(node != root) {
+	            result.add(node.getTweet());
+	        }
+	        
+	        Collections.sort(node.getChildren(), new Comparator<TweetTreeNode>() {
+	            @Override
+	            public int compare(TweetTreeNode lhs, TweetTreeNode rhs) {
+	                long result = lhs.getTweet().getTime() - rhs.getTweet().getTime();
+	                
+	                if(result == 0) {
+	                    return 0;
+	                } else if(result > 0) {
+	                    return 1;
+	                } else {
+	                    return -1;
+	                }
+	            }
+            });
+	        
+	        for(TweetTreeNode child: node.getChildren()) {
+	            queue.offer(child);
+	        }
+	    }
+	    
+	    this.listData = new TweetList(result);
+	}
 
+	private static class TweetTreeNode {
+	    
+	    private Tweet tweet;
+	    private ArrayList<TweetTreeNode> children;
+	    
+	    public TweetTreeNode() {
+	        this(null);
+	    }
+	    
+	    public TweetTreeNode(Tweet tweet) {
+	        this.tweet = tweet;
+	        this.children = new ArrayList<TweetTreeNode>();
+	    }
+	    
+	    public Tweet getTweet() {
+	        return this.tweet;
+	    }
+	    
+	    public ArrayList<TweetTreeNode> getChildren(){
+	        return this.children;
+	    }
+	    
+	    public void add(Tweet tweet) {
+	        this.children.add(new TweetTreeNode(tweet));
+	    }
+	    
+	    public TweetTreeNode findBySid(String sid) {
+	        if(this.tweet.getSid().equals(sid)) {
+	            return this;
+	        }
+	        
+	        Queue<TweetTreeNode> queue = new ArrayDeque<TweetTreeNode>();	        
+	        queue.offer(this);
+	        
+	        while(!queue.isEmpty()) {
+	            TweetTreeNode node = queue.poll();
+	            
+	            if(node.getTweet() != null && node.getTweet().getSid().equals(sid)) {
+	                return node;
+	            }
+	            
+	            for(TweetTreeNode child: node.getChildren()) {
+	                queue.offer(child);
+	            }
+	        }
+	        
+	        return null;
+	    }
+	}
 }
