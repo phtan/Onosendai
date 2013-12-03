@@ -124,7 +124,6 @@ public class TweetListAdapter extends BaseAdapter {
 	public void sortByThread(){
 	    TweetTreeNode root = new TweetTreeNode();
 	    ArrayList<Tweet> result = new ArrayList<Tweet>();
-	    
 	    for(Tweet tweet: listData.getTweets()) {
 	        Meta inReplyTo = tweet.getFirstMetaOfType(MetaType.INREPLYTO);
 	        
@@ -135,10 +134,8 @@ public class TweetListAdapter extends BaseAdapter {
 	            replyedTweet.add(tweet);
 	        }
 	    }
-	    
 	    Queue<TweetTreeNode> queue = new ArrayDeque<TweetTreeNode>();
 	    queue.offer(root);
-	    
 	    while(!queue.isEmpty()) {
 	        TweetTreeNode node = queue.poll();
 	        
@@ -149,11 +146,12 @@ public class TweetListAdapter extends BaseAdapter {
 	        Collections.sort(node.getChildren(), new Comparator<TweetTreeNode>() {
 	            @Override
 	            public int compare(TweetTreeNode lhs, TweetTreeNode rhs) {
-	                long result = lhs.getTweet().getTime() - rhs.getTweet().getTime();
+	                long t1 = lhs.getTweet().getTime();
+                    long t2 = rhs.getTweet().getTime();
 	                
-	                if(result == 0) {
+	                if(t1 == t2) {
 	                    return 0;
-	                } else if(result > 0) {
+	                } else if(t1 > t2) {
 	                    return 1;
 	                } else {
 	                    return -1;
@@ -168,6 +166,26 @@ public class TweetListAdapter extends BaseAdapter {
 	    
 	    this.listData = new TweetList(result);
 	}
+
+    public void sortByTimeline() {
+	    ArrayList<Tweet> result = new ArrayList<Tweet>(listData.getTweets());
+        Collections.sort(result,  new Comparator<TweetTreeNode>() {
+	            @Override
+	            public int compare(Tweet o1, Tweet o2) {
+	                long t1 = o1.getTime();
+                    long t2 = o2.getTime();
+	                
+	                if(t1 > t2)
+	                    return -1;
+                    else if(t1 == t2)
+	                    return 0;
+	                else {
+	                    return 1;
+	                }
+	            }
+            });
+        this.listData = new TweetList(result);
+    }
 
 	private static class TweetTreeNode {
 	    
