@@ -1,0 +1,44 @@
+{
+  "accounts": [
+    {
+      "id": "t0",
+      "provider": "twitter",
+      "consumerKey": "CONSUMER-KEY",
+      "consumerSecret": "CONSUMER-SECRET",
+      "accessToken": "ACCESS-TOKEN",
+      "accessSecret": "ACCESS-TOKEN-SECRET"
+
+      "DELETE-ME": "Apply for the above information at https://dev.twitter.com/apps (Twitter Application Management). Then place this file in the /storage/sdcard0/ directory (exists from Android API level 14+ (Ice Cream Sandwich onwards))."
+
+    }, {
+      "id": "sw0",
+      "provider": "successwhale",
+      "username": "?username?",
+      "password": "?password?"
+    }, {
+      "id": "b0",
+      "provider": "buffer",
+      "accessToken": "?accesstoken?"
+    }
+  ],
+  "feeds": [
+    {
+      "id": 0,
+      "title": "main",
+      "account": "t0",
+      "resource": "timeline",
+      "refresh": "15min"
+    }, {
+      "id": 1,
+      "title": "my list",
+      "account": "t0",
+      "resource": "lists/mylist",
+      "refresh": "15min",
+      "notify": true
+    }, {
+      "id": 2,
+      "title": "reading list",
+      "resource": "later"
+    }
+  ]
+}
