@@ -120,7 +120,7 @@ public class TweetListAdapter extends BaseAdapter {
 		}
 
 	}
-	
+	/*
 	public void sortByThread(){
 	    TweetTreeNode root = new TweetTreeNode();
 	    ArrayList<Tweet> result = new ArrayList<Tweet>();
@@ -185,7 +185,7 @@ public class TweetListAdapter extends BaseAdapter {
 	            }
             });
         this.listData = new TweetList(result);
-    }
+    } */
 
 	private static class TweetTreeNode {
 	    

@@ -10,7 +10,7 @@ import com.vaguehope.onosendai.util.StringHelper;
 
 public final class TwitterOauth {
 
-	public static final String CALLBACK_URL = "oauth://twitter";
+	public static final String CALLBACK_URL = "https://api.twitter.com/oauth/authenticate";
 
 	public static final String IEXTRA_AUTH_URL = "auth_url";
 	public static final String IEXTRA_OAUTH_VERIFIER = "oauth_verifier";
@@ -19,8 +19,8 @@ public final class TwitterOauth {
 //	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 	private static final String RES_PATH = "/api_twitter";
-	private static final String DEF_KEY = "API_TWITTER_CONSUMER_KEY";
-	private static final String DEF_SECRET = "API_TWITTER_CONSUMER_SECRET";
+	private static final String DEF_KEY = "BLVZ4gI3m3YqdyxkCGbgeA";
+	private static final String DEF_SECRET = "wQBrJFwdW62V08mqyCbk6xncL6zA6LmtfzUuegtYLM";
 
 	private static boolean read = false;
 	private static String key;
@@ -31,13 +31,15 @@ public final class TwitterOauth {
 	}
 
 	public static String getConsumerKey () {
-		read();
-		return key;
+		//read();
+		//return key;
+		return DEF_KEY;
 	}
 
 	public static String getConsumerSecret () {
-		read();
-		return secret;
+		//read();
+		//return secret;
+		return DEF_SECRET;
 	}
 
 	private static void read () {

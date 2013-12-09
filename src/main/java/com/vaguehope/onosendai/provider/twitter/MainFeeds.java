@@ -28,6 +28,22 @@ enum MainFeeds implements FeedGetter {
 			return TwitterUtils.fetchTwitterFeed(account, t, this, sinceId);
 		}
 	},
+	SORTBYTHREAD {
+		@Override
+		public ResponseList<Status> getTweets (final Twitter t, final Paging paging) throws TwitterException {
+			return t.getHomeTimeline(paging);
+		}
+
+		@Override
+		public int recommendedFetchCount () {
+			return C.TWITTER_TIMELINE_MAX_FETCH;
+		}
+
+		@Override
+		public TweetList getTweets (final Account account, final Twitter t, final long sinceId) throws TwitterException {
+			return TwitterUtils.fetchTwitterFeed(account, t, this, sinceId);
+		}
+	},
 	MENTIONS {
 		@Override
 		public ResponseList<Status> getTweets (final Twitter t, final Paging paging) throws TwitterException {

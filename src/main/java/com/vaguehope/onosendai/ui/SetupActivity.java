@@ -177,6 +177,7 @@ public class SetupActivity extends Activity {
 					.account(account)
 					.column(TwitterColumnFactory.homeTimeline(-1, account))
 					.column(TwitterColumnFactory.mentions(-1, account))
+					.column(TwitterColumnFactory.sortByThread(-1, account))
 					.readLater()
 					.writeOverMain(this);
 			startActivity(new Intent(getApplicationContext(), MainActivity.class));
