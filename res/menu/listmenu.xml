@@ -21,5 +21,8 @@
 			android:id="@+id/mnuPreferences"
 			android:title="@string/menu_preferences" />
 
+		<item
+			android:id="@+id/mnuSortByThread"
+			android:title="@string/menu_sortbythread" />
 	</group>
 </menu>

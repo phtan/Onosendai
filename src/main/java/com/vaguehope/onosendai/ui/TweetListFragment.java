@@ -393,6 +393,8 @@ public class TweetListFragment extends Fragment {
 			case R.id.mnuPreferences:
 				startActivity(new Intent(getActivity(), OsPreferenceActivity.class));
 				return true;
+			case R.id.mnuSortByThread:
+				return true;
 			default:
 				return false;
 		}
