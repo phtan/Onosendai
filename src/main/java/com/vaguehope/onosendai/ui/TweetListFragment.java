@@ -395,6 +395,17 @@ public class TweetListFragment extends Fragment {
 				return true;
 			case R.id.mnuSortByThread:
 				return true;
+			case R.id.mnuSwitchTheme:
+				if (ThemeManager.THEME == 1) {
+					ThemeManager.THEME = 0;
+				}
+				else {
+					ThemeManager.THEME = 1;
+				}
+				Intent intent = getActivity().getIntent();
+				getActivity().finish();
+				startActivity(intent);
+				return true;
 			default:
 				return false;
 		}

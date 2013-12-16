@@ -17,4 +17,10 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <!-- Testing Theme-->
+    <style name="LightTheme" parent="android:Theme.Light">
+    </style>
+
+    <style name="BlackTheme" parent="android:Theme.Black">
+    </style> 
 </resources>

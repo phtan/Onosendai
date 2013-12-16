@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity implements ImageLoader, OnSha
 			return;
 		}
 		this.prefs.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
+		setTheme(ThemeManager.getTheme());
 		setContentView(R.layout.activity_main);
 
 		try {
