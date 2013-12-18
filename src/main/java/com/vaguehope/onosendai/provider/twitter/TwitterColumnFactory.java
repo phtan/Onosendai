@@ -17,10 +17,10 @@ public final class TwitterColumnFactory {
 		return new Column(id, "Home Timeline", account.getId(), MainFeeds.TIMELINE.name(), DEFAULT_REFRESH_MINS, null, false);
 	}
 
-	public static Column sortByThread (final int id, final Account account) {
+/*	public static Column sortByThread (final int id, final Account account) {
 		checkAccount(account);
 		return new Column(id, "Sort by Thread", account.getId(), MainFeeds.SORTBYTHREAD.name(), DEFAULT_REFRESH_MINS, null, false);
-	}
+	}*/
 
 	public static Column mentions (final int id, final Account account) {
 		checkAccount(account);

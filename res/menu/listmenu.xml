@@ -25,8 +25,8 @@
 			android:id="@+id/mnuSortByThread"
 			android:title="@string/menu_sortbythread" />
 
-		<item
+<!--		<item
 			android:id="@+id/mnuSwitchTheme"
-			android:title="@string/menu_switchtheme" />
+			android:title="@string/menu_switchtheme" /> -->
 	</group>
 </menu>

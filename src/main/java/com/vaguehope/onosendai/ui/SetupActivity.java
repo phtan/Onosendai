@@ -33,7 +33,7 @@ import com.vaguehope.onosendai.ui.pref.TwitterOauthWizard.TwitterOauthCallback;
 import com.vaguehope.onosendai.util.DialogHelper;
 import com.vaguehope.onosendai.util.DialogHelper.Listener;
 import com.vaguehope.onosendai.util.LogWrapper;
-
+import com.vaguehope.onosendai.config.Theme;
 public class SetupActivity extends Activity {
 
 	private static final LogWrapper LOG = new LogWrapper("SETUP");
@@ -51,7 +51,7 @@ public class SetupActivity extends Activity {
 		setContentView(R.layout.setup);
 
 		this.prefs = new Prefs(this);
-
+		this.prefs.setTheme(Theme.BLACK);
 		this.spnAct = (Spinner) findViewById(R.id.spnSetupAction);
 		this.txtActDes = (TextView) findViewById(R.id.txtActionDescription);
 		this.btnContinue = (Button) findViewById(R.id.btnContinue);
@@ -177,7 +177,7 @@ public class SetupActivity extends Activity {
 					.account(account)
 					.column(TwitterColumnFactory.homeTimeline(-1, account))
 					.column(TwitterColumnFactory.mentions(-1, account))
-					.column(TwitterColumnFactory.sortByThread(-1, account))
+					//.column(TwitterColumnFactory.sortByThread(-1, account))
 					.readLater()
 					.writeOverMain(this);
 			startActivity(new Intent(getApplicationContext(), MainActivity.class));

@@ -29,6 +29,9 @@ public class Prefs {
 
 	private static final LogWrapper LOG = new LogWrapper("PRF");
 
+	private static final String KEY_THEME = "theme";
+
+
 	private final SharedPreferences sharedPreferences;
 
 	public Prefs (final Context context) {
@@ -41,6 +44,20 @@ public class Prefs {
 
 	public SharedPreferences getSharedPreferences () {
 		return this.sharedPreferences;
+	}
+
+	public Theme getTheme() {
+		String t = this.sharedPreferences.getString(KEY_THEME, null);
+		if (t.equals("Light"))
+			return Theme.LIGHT;
+		else
+			return Theme.BLACK;
+	}
+
+	public void setTheme(Theme t) {
+		final Editor e = this.sharedPreferences.edit();
+		e.putString(KEY_THEME, t.getTheme());
+		e.commit();
 	}
 
 	public boolean isConfigured () {
