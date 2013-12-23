@@ -169,7 +169,7 @@ public class TweetListAdapter extends BaseAdapter {
 
     public void sortByTimeline() {
 	    ArrayList<Tweet> result = new ArrayList<Tweet>(listData.getTweets());
-        Collections.sort(result,  new Comparator<TweetTreeNode>() {
+        Collections.sort(result,  new Comparator<Tweet>() {
 	            @Override
 	            public int compare(Tweet o1, Tweet o2) {
 	                long t1 = o1.getTime();
