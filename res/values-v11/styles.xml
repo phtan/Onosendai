@@ -5,7 +5,6 @@
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.NoActionBar">
-        <!-- API 11 theme customizations can go here. -->
     </style>
     
     <!-- Testing Theme-->
@@ -16,5 +15,10 @@
 
     <style name="BlackTheme" parent="android:Theme.Holo.NoActionBar">
     </style> 
+    
+    <!--  Change the font colour -->
+	<style name="DemoTheme" parent="android:Theme.Holo.NoActionBar">
+	    <item name="android:textColor">#0099CC</item>
+	</style>
 
 </resources>
