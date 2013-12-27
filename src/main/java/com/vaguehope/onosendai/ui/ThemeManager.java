@@ -10,9 +10,9 @@ public class ThemeManager {
 			case LIGHT:
 				return R.style.LightTheme;
 			case BLACK:
-				return R.style.BlackTheme;
+				return R.style.DemoTheme;
 			default:
-				return R.style.BlackTheme;
+				return R.style.DemoTheme;
 		}
 	}
 }
