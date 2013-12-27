@@ -163,13 +163,13 @@ public class TweetListAdapter extends BaseAdapter {
 	            queue.offer(child);
 	        }
 	    }
-	    
 	    this.listData = new TweetList(result);
+		notifyDataSetChanged();
 	}
 
     public void sortByTimeline() {
 	    ArrayList<Tweet> result = new ArrayList<Tweet>(listData.getTweets());
-        Collections.sort(result,  new Comparator<TweetTreeNode>() {
+        Collections.sort(result,  new Comparator<Tweet>() {
 	            @Override
 	            public int compare(Tweet o1, Tweet o2) {
 	                long t1 = o1.getTime();
@@ -185,6 +185,7 @@ public class TweetListAdapter extends BaseAdapter {
 	            }
             });
         this.listData = new TweetList(result);
+		notifyDataSetChanged();
     }
 
 	private static class TweetTreeNode {
