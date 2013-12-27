@@ -66,6 +66,9 @@
 	<string name="menu_refresh_column">Refresh Column</string>
 	<string name="menu_refresh_all">Refresh All</string>
 	<string name="menu_preferences">Preferences</string>
+	<string name="menu_sortbythread">Sort by Thread</string>
+	<string name="menu_sortbytimeline">Sort by Timeline</string>
+	<string name="menu_switchtheme">Switch Theme</string>
 
 	<string name="btn_tweet_close">Close</string>
 	<string name="btn_tweet_later">Later</string>

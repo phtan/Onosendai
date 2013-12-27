@@ -16,4 +16,9 @@
 		android:title="Advanced"
 		android:summary="Reload configuration from JSON file" />
 
+	<header
+		android:fragment="com.vaguehope.onosendai.ui.pref.ThemesPrefFragment"
+		android:title="Themes"
+		android:summary="Change the theme of the application" />
+
 </preference-headers>

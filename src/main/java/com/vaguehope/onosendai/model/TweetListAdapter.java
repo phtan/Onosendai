@@ -163,8 +163,8 @@ public class TweetListAdapter extends BaseAdapter {
 	            queue.offer(child);
 	        }
 	    }
-	    
 	    this.listData = new TweetList(result);
+		notifyDataSetChanged();
 	}
 
     public void sortByTimeline() {
@@ -185,6 +185,7 @@ public class TweetListAdapter extends BaseAdapter {
 	            }
             });
         this.listData = new TweetList(result);
+		notifyDataSetChanged();
     }
 
 	private static class TweetTreeNode {
