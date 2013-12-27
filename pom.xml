@@ -149,6 +149,35 @@
 						</sdk>
 					</configuration>
 				</plugin>
+					
+				<!-- Avoid error in Eclipse on 'plugin execution not covered by with lifecycle configuration' -->
+				<plugin>
+	                <groupId>org.eclipse.m2e</groupId>
+	                <artifactId>lifecycle-mapping</artifactId>
+	                <version>1.0.0</version>
+	                <configuration>
+						<lifecycleMappingMetadata>
+						     <pluginExecutions>
+						       <pluginExecution>
+						         <pluginExecutionFilter>
+						           <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						           <artifactId>android-maven-plugin</artifactId>
+						           <versionRange>[${android-maven.version},)</versionRange>
+						           <goals>
+						             <goal>generate-sources</goal>
+						             <goal>proguard</goal>
+						           </goals>
+						         </pluginExecutionFilter>
+						         <action>
+						           <execute>
+						                <runOnIncremental>false</runOnIncremental>
+					               </execute>
+						         </action>
+						       </pluginExecution>
+						     </pluginExecutions>
+						   </lifecycleMappingMetadata>
+					   </configuration>
+				</plugin>
 
 				<plugin>
 					<groupId>com.google.code.maven-replacer-plugin</groupId>
