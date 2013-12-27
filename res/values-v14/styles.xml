@@ -8,5 +8,13 @@
     <style name="AppBaseTheme" parent="android:Theme.Holo.NoActionBar">
         <!-- API 14 theme customizations can go here. -->
     </style>
+    
+    <!-- Testing Theme-->
+    <style name="LightTheme" parent="android:Theme.Holo.Light">
+            <item name="android:windowActionBar">false</item>
+            <item name="android:windowNoTitle">true</item>
+    </style>
 
+    <style name="BlackTheme" parent="android:Theme.Holo.NoActionBar">
+    </style> 
 </resources>

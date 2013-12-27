@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity implements ImageLoader, OnSha
 			return;
 		}
 		this.prefs.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
+		setTheme(ThemeManager.getTheme(this.prefs.getTheme()));
 		setContentView(R.layout.activity_main);
 
 		try {
@@ -179,6 +179,10 @@ public class MainActivity extends FragmentActivity implements ImageLoader, OnSha
 
 	Config getConf () {
 		return this.conf;
+	}
+
+	Prefs getPrefs() {
+		return this.prefs;
 	}
 
 	public ExecutorService getExec () {
