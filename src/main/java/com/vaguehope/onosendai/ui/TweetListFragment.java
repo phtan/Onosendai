@@ -401,10 +401,10 @@ public class TweetListFragment extends Fragment {
 				startActivity(new Intent(getActivity(), OsPreferenceActivity.class));
 				return true;
 			case R.id.mnuSortByThread:
-				//this.adapter.sortByThread();
+				this.adapter.sortByThread();
 				return true;
 			case R.id.mnuSortByTimeline:
-				//this.adapter.sortByTimeline();
+				this.adapter.sortByTimeline();
 				return true;
 /*			case R.id.mnuSwitchTheme:
 				if (mainActivity.THEME == 1) {
