@@ -181,6 +181,10 @@ public class MainActivity extends FragmentActivity implements ImageLoader, OnSha
 		return this.conf;
 	}
 
+	Prefs getPrefs() {
+		return this.prefs;
+	}
+
 	public ExecutorService getExec () {
 		return this.exec;
 	}

@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ContextThemeWrapper;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ import com.vaguehope.onosendai.R;
 import com.vaguehope.onosendai.config.Account;
 import com.vaguehope.onosendai.config.Column;
 import com.vaguehope.onosendai.config.Config;
+import com.vaguehope.onosendai.config.Prefs;
 import com.vaguehope.onosendai.config.InternalColumnType;
 import com.vaguehope.onosendai.images.ImageLoader;
 import com.vaguehope.onosendai.images.ImageLoaderUtils;
@@ -95,6 +97,7 @@ public class TweetListFragment extends Fragment {
 	private SidebarLayout sidebar;
 	private ProgressBar prgUpdating;
 	private Button btnColumnTitle;
+	private Button closeButton;
 	private ListView tweetList;
 	private TextView tweetListStatus;
 
@@ -132,8 +135,10 @@ public class TweetListFragment extends Fragment {
 		if (this.scrollState == null) {
 			this.scrollState = ScrollState.fromBundle(savedInstanceState);
 		}
+		final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), ThemeManager.getTheme(this.mainActivity.getPrefs().getTheme()));
 
-		final View rootView = inflater.inflate(R.layout.tweetlist, container, false);
+		LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+		final View rootView = localInflater.inflate(R.layout.tweetlist, container, false);
 		this.sidebar = (SidebarLayout) rootView.findViewById(R.id.tweetListLayout);
 		this.sidebar.setListener(this.sidebarListener);
 
@@ -168,7 +173,9 @@ public class TweetListFragment extends Fragment {
 		final ListView lstTweetPayload = (ListView) rootView.findViewById(R.id.tweetDetailPayloadList);
 		lstTweetPayload.setAdapter(this.lstTweetPayloadAdaptor);
 		lstTweetPayload.setOnItemClickListener(new PayloadListClickListener(this.payloadClickListener));
-		((Button) rootView.findViewById(R.id.tweetDetailClose)).setOnClickListener(new SidebarLayout.ToggleSidebarListener(this.sidebar));
+		closeButton = ((Button) rootView.findViewById(R.id.tweetDetailClose));
+		closeButton.setOnClickListener(new SidebarLayout.ToggleSidebarListener(this.sidebar));
+		closeButton.setVisibility(View.GONE);
 		this.btnDetailsLater = (Button) rootView.findViewById(R.id.tweetDetailLater);
 
 		this.scrollIndicator = ScrollIndicator.attach(getActivity(),
@@ -394,6 +401,10 @@ public class TweetListFragment extends Fragment {
 				startActivity(new Intent(getActivity(), OsPreferenceActivity.class));
 				return true;
 			case R.id.mnuSortByThread:
+				//this.adapter.sortByThread();
+				return true;
+			case R.id.mnuSortByTimeline:
+				//this.adapter.sortByTimeline();
 				return true;
 /*			case R.id.mnuSwitchTheme:
 				if (mainActivity.THEME == 1) {
@@ -484,6 +495,7 @@ public class TweetListFragment extends Fragment {
 		new InReplyToLoaderTask(getActivity().getApplicationContext(), getConf(), getProviderMgr(), this.lstTweetPayloadAdaptor).execute(tweet);
 
 		setReadLaterButton(tweet, this.isLaterColumn);
+		closeButton.setVisibility(View.VISIBLE);
 		this.sidebar.openSidebar();
 	}
 
