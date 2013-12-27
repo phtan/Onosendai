@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ContextThemeWrapper;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ import com.vaguehope.onosendai.R;
 import com.vaguehope.onosendai.config.Account;
 import com.vaguehope.onosendai.config.Column;
 import com.vaguehope.onosendai.config.Config;
+import com.vaguehope.onosendai.config.Prefs;
 import com.vaguehope.onosendai.config.InternalColumnType;
 import com.vaguehope.onosendai.images.ImageLoader;
 import com.vaguehope.onosendai.images.ImageLoaderUtils;
@@ -132,8 +134,10 @@ public class TweetListFragment extends Fragment {
 		if (this.scrollState == null) {
 			this.scrollState = ScrollState.fromBundle(savedInstanceState);
 		}
+		final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), ThemeManager.getTheme(this.mainActivity.getPrefs().getTheme()));
 
-		final View rootView = inflater.inflate(R.layout.tweetlist, container, false);
+		LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+		final View rootView = localInflater.inflate(R.layout.tweetlist, container, false);
 		this.sidebar = (SidebarLayout) rootView.findViewById(R.id.tweetListLayout);
 		this.sidebar.setListener(this.sidebarListener);
 
