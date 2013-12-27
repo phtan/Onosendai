@@ -97,6 +97,7 @@ public class TweetListFragment extends Fragment {
 	private SidebarLayout sidebar;
 	private ProgressBar prgUpdating;
 	private Button btnColumnTitle;
+	private Button closeButton;
 	private ListView tweetList;
 	private TextView tweetListStatus;
 
@@ -172,7 +173,9 @@ public class TweetListFragment extends Fragment {
 		final ListView lstTweetPayload = (ListView) rootView.findViewById(R.id.tweetDetailPayloadList);
 		lstTweetPayload.setAdapter(this.lstTweetPayloadAdaptor);
 		lstTweetPayload.setOnItemClickListener(new PayloadListClickListener(this.payloadClickListener));
-		((Button) rootView.findViewById(R.id.tweetDetailClose)).setOnClickListener(new SidebarLayout.ToggleSidebarListener(this.sidebar));
+		closeButton = ((Button) rootView.findViewById(R.id.tweetDetailClose));
+		closeButton.setOnClickListener(new SidebarLayout.ToggleSidebarListener(this.sidebar));
+		closeButton.setVisibility(View.GONE);
 		this.btnDetailsLater = (Button) rootView.findViewById(R.id.tweetDetailLater);
 
 		this.scrollIndicator = ScrollIndicator.attach(getActivity(),
@@ -398,6 +401,10 @@ public class TweetListFragment extends Fragment {
 				startActivity(new Intent(getActivity(), OsPreferenceActivity.class));
 				return true;
 			case R.id.mnuSortByThread:
+				//this.adapter.sortByThread();
+				return true;
+			case R.id.mnuSortByTimeline:
+				//this.adapter.sortByTimeline();
 				return true;
 /*			case R.id.mnuSwitchTheme:
 				if (mainActivity.THEME == 1) {
@@ -488,6 +495,7 @@ public class TweetListFragment extends Fragment {
 		new InReplyToLoaderTask(getActivity().getApplicationContext(), getConf(), getProviderMgr(), this.lstTweetPayloadAdaptor).execute(tweet);
 
 		setReadLaterButton(tweet, this.isLaterColumn);
+		closeButton.setVisibility(View.VISIBLE);
 		this.sidebar.openSidebar();
 	}
 

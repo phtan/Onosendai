@@ -25,6 +25,10 @@
 			android:id="@+id/mnuSortByThread"
 			android:title="@string/menu_sortbythread" />
 
+		<item
+			android:id="@+id/mnuSortByTimeline"
+			android:title="@string/menu_sortbytimeline" />
+
 <!--		<item
 			android:id="@+id/mnuSwitchTheme"
 			android:title="@string/menu_switchtheme" /> -->
