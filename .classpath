@@ -43,5 +43,16 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/download/programming/Java/acra-4.5.0/build/acra-4.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Android/adt-bundle-windows-x86_64-20131030/sdk/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/twitter4j-3.0.5/lib/twitter4j-core-3.0.5.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/joda-time-2.3/joda-time-2.3.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/commons-io-2.4/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/powermock-mockito-1.5.2-full.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/hamcrest-1.3/hamcrest-all-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/robolectric-1.2-8.1.jar"/>
+	<classpathentry kind="lib" path="D:/download/programming/Java/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

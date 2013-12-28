@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Queue;
+import java.util.Stack;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -134,10 +135,12 @@ public class TweetListAdapter extends BaseAdapter {
 	            replyedTweet.add(tweet);
 	        }
 	    }
-	    Queue<TweetTreeNode> queue = new ArrayDeque<TweetTreeNode>();
-	    queue.offer(root);
-	    while(!queue.isEmpty()) {
-	        TweetTreeNode node = queue.poll();
+	    Stack<TweetTreeNode> stack = new Stack<TweetTreeNode>();
+	    stack.push(root);
+//	    Queue<TweetTreeNode> queue = new ArrayDeque<TweetTreeNode>();
+//	    queue.offer(root);
+	    while(!stack.empty()) {
+	        TweetTreeNode node = stack.pop();
 	        
 	        if(node != root) {
 	            result.add(node.getTweet());
@@ -178,7 +181,7 @@ public class TweetListAdapter extends BaseAdapter {
             }
 	        
 	        for(TweetTreeNode child: node.getChildren()) {
-	            queue.offer(child);
+	            stack.push(child);
 	        }
 	    }
 	    this.listData = new TweetList(result);
