@@ -143,21 +143,39 @@ public class TweetListAdapter extends BaseAdapter {
 	            result.add(node.getTweet());
 	        }
 	        
-	        Collections.sort(node.getChildren(), new Comparator<TweetTreeNode>() {
-	            @Override
-	            public int compare(TweetTreeNode lhs, TweetTreeNode rhs) {
-	                long t1 = lhs.getTweet().getTime();
-                    long t2 = rhs.getTweet().getTime();
-	                
-	                if(t1 == t2) {
-	                    return 0;
-	                } else if(t1 > t2) {
-	                    return 1;
-	                } else {
-	                    return -1;
-	                }
-	            }
-            });
+            if (node == root) {
+                Collections.sort(node.getChildren(), new Comparator<TweetTreeNode>() {
+                    @Override
+                    public int compare(TweetTreeNode lhs, TweetTreeNode rhs) {
+                        long t1 = lhs.getTweet().getTime();
+                        long t2 = rhs.getTweet().getTime();
+
+                        if(t1 == t2) {
+                            return 0;
+                        } else if(t1 > t2) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    }
+                });
+            } else {
+                Collections.sort(node.getChildren(), new Comparator<TweetTreeNode>() {
+                    @Override
+                    public int compare(TweetTreeNode lhs, TweetTreeNode rhs) {
+                        long t1 = lhs.getTweet().getTime();
+                        long t2 = rhs.getTweet().getTime();
+
+                        if(t1 == t2) {
+                            return 0;
+                        } else if(t1 > t2) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    }
+                });
+            }
 	        
 	        for(TweetTreeNode child: node.getChildren()) {
 	            queue.offer(child);
