@@ -153,9 +153,9 @@ public class TweetListAdapter extends BaseAdapter {
                         if(t1 == t2) {
                             return 0;
                         } else if(t1 > t2) {
-                            return 1;
-                        } else {
                             return -1;
+                        } else {
+                            return 1;
                         }
                     }
                 });
